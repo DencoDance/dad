@@ -1,1 +1,20 @@
-{# empty Twig template #}
+{% set title = "Add new institutions" %}
+{{headTitle('Add institution')}}
+<h1>{{title}}</h1>
+{% do form.setAttribute('action',url('corp', {'action' : 'add'})) %}
+ 
+{{ form().openTag(form)|raw }}
+    {{formHidden( form.get('id'))}}
+     <table>
+        <tr>
+            <td>{{formRow(form.get('name'))}}</td>
+            <td>{{formRow(form.get('phone'))}}</td>
+        </tr>
+        <tr>
+            <td>{{formRow(form.get('location'))}}</td>
+        </tr>
+        <tr>
+            <td>{{formElement(form.get('submit'))}}</td>
+        </tr>
+     </table>
+{{ form().closeTag(form)|raw }}

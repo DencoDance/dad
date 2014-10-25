@@ -1,1 +1,15 @@
-{# empty Twig template #}
+{% set title = " Delete institution" %}
+{{headTitle('Delete institution')}}
+<h1>{{title}}</h1>
+<p>Are you sure that you want to delete '{{corp.name}}'?
+</p>
+
+{% set url = url('corp', {'action' : 'delete', 'id':id}) %}
+ 
+<form action="{{url}}" method="post">
+<div>
+    <input type="hidden" name="id" value="{{id}}" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>

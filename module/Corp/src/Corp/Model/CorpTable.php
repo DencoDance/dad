@@ -29,10 +29,12 @@ class CorpTable
         return $row;
     }
  
-    public function saveCorp(Album $corp)
+    public function saveCorp(Corp $corp)
     {
         $data = array(
-            'name' => $corp->artist,
+            'name' => $corp->name,
+            'phone' => $corp->phone,
+            'location' => $corp->location,
         );
  
         $id = (int)$corp->id;

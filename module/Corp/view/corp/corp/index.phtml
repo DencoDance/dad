@@ -1,29 +1,30 @@
 <?php
- 
-$title = 'My albums';
+$title = $this->translate('Institutions');
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
+    <a href="<?php echo $this->url('corp', array('action' => 'add')); ?>">Add new institution</a>
 </p>
- 
+
 <table class="table">
-<tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>&nbsp;</th>
-</tr>
-<?php foreach ($albums as $album) : ?>
-<tr>
-    <td><?php echo $this->escapeHtml($album->title);?></td>
-    <td><?php echo $this->escapeHtml($album->artist);?></td>
-    <td>
-        <a href="<?php echo $this->url('album',
-            array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
-        <a href="<?php echo $this->url('album',
-            array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
-    </td>
-</tr>
-<?php endforeach; ?>
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Phone</th>
+        <th>Actions</th>
+    </tr>
+    <?php foreach ($corps as $corp) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($corp->name); ?></td>
+            <td><?php echo $this->escapeHtml($corp->location); ?></td>
+            <td><?php echo $this->escapeHtml($corp->phone); ?></td>
+            <td>
+                <a href="<?php echo $this->url('corp', array('action' => 'getDepartments', 'id' => $corp->id)); ?>">Departments</a>&nbsp;/
+                <a href="<?php echo $this->url('corp', array('action' => 'getContacts', 'id' => $corp->id)); ?>">All&nbsp;contacts</a>&nbsp;/
+                <a href="<?php echo $this->url('corp', array('action' => 'edit', 'id' => $corp->id)); ?>">Edit</a>&nbsp;/
+                <a href="<?php echo $this->url('corp', array('action' => 'delete', 'id' => $corp->id)); ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
 </table>

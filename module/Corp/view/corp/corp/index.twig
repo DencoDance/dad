@@ -1,1 +1,28 @@
-{# empty Twig template #}
+{% set title = "Institutions" %}
+{{headTitle('Institutions')}}
+<h1>{{title}}</h1>
+<p>
+    <a href="{{url('corp', {'action' : 'add'})}}">Add new institution</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Phone</th>
+        <th>Actions</th>
+    </tr>
+    {% for corp in corps %}
+        <tr>
+            <td>{{corp.name}}</td>
+            <td>{{corp.location}}</td>
+            <td>{{corp.phone}}</td>
+            <td>
+                <a href="{{url('corp', {'action' : 'getDepartments', 'id' : corp.id})}}">Departments</a>&nbsp;/
+                <a href="{{url('corp', {'action' : 'getContacts', 'id' : corp.id})}}">All&nbsp;contacts</a>&nbsp;/
+                <a href="{{url('corp', {'action' : 'edit', 'id' : corp.id})}}">Edit</a>&nbsp;/
+                <a href="{{url('corp', {'action' : 'delete', 'id' : corp.id})}}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
